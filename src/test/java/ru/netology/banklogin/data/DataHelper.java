@@ -21,6 +21,9 @@ public class DataHelper {
     private static String generateRandomPassword() {
         return faker.internet().password();
     }
+    public static AuthInfo generateRandomUser() {
+        return new AuthInfo(generateRandomLogin(), generateRandomPassword());
+    }
     public static VerificationCode generateRandomVerificationCode() {
         return new VerificationCode(faker.numerify("#######"));
     }

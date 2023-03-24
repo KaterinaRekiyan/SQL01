@@ -7,8 +7,7 @@ import ru.netology.banklogin.data.DataHelper;
 import ru.netology.banklogin.data.SQLHelper;
 import ru.netology.banklogin.page.LoginPage;
 
-import static java.nio.channels.FileChannel.open;
-import static ru.netology.banklogin.data.SQLHelper.cleanDataBase;
+import static com.codeborne.selenide.Selenide.open;
 
 public class BankLoginTest {
     @AfterAll
@@ -19,7 +18,7 @@ public class BankLoginTest {
     @Test
     @DisplayName("Should successfully login to dashboard with exist login and password from sut test data")
     void shouldSuccessfullyLogin() {
-        var loginPage = open("http://185.119.57.176:9999", LoginPage.class);
+        var loginPage = open("http://localhost:9999", LoginPage.class);
         var authInfo = DataHelper.getAuthInfoWithTestData();
         var verificationPage = loginPage.validLogin(authInfo);
         verificationPage.verifyVerificationPageVisibility();
